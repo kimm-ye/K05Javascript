@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qu09.html</title>
+    <script>
+        document.write("<h2>난수10개 생성</h2>")
+        document.write("<hr>");
+        var plots = new Array(10);
+        // var plots = []; 이렇게 사용해도 되고 가장 많이 사용한다.
+        for(var i=0; i<plots.length; i++){
+            /*
+            Math.random()은 0~1사이ㅢ 난수를 생성
+            생성된 난수에 100 곱하면 0~99까지 나옴
+            여기에 1을 더해서 1~100사이의 난수를 구함
+            */
+            plots[i] = Math.floor(Math.random()*100+1);
+            document.write(plots[i] + " ");
+        }
+        document.write("<hr>");
+
+        // document.write("가장큰수는? " + Math.max.apply(null, plots)); //방법1
+
+        //방법2 : 나
+        // for(var i=0; i<plots.length; i++){
+        //     for(var j=i+1; j<plots.length; j++){
+        //         if(plots[i] > plots[j]){
+        //             var temp = plots[i];
+        //             plots[i] = plots[j];
+        //             plots[j] = temp;
+        //         }
+        //     }
+        // }
+        // document.write("가장큰수는? " + plots[9]); 
+
+        //최대값 찾아내기 : 방법3 선생님
+        var maxNum = plots[0]; //배열의 0번 인덱스를 기준값으로 설정
+        for(var i=1; i<plots.length; i++){ //기준값이 0이므로 1부터 비교시작
+            if(maxNum < plots[i]){
+                //기준값보다 큰값이 발견되면 값을 변경한다.
+                maxNum = plots[i];
+            }
+        }
+        document.write("가장큰수는? " +maxNum); 
+
+
+        document.write("<hr>");
+        </script>
+</head>
+<body>
+    
+</body>
+</html>

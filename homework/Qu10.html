@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qu10.html</title>
+    <script>
+        document.write("<h2>정수 5개 입력받아 역순으로 출력</h2>");
+
+        document.write("<hr>");
+        var inputNum = new Array(5);
+        document.write("입력된 수의 배열 <br>");
+        // var inputNum = []; 써도됨
+        for(var i=0; i<inputNum.length; i++){
+            //숫자 5개를 입력받은 후 배열에 저장.
+            var str = prompt( (i+1) + "번째 정수를 입력하세요");
+            //연산이 필요없다면 parseInt()는 없어도 됨.
+            inputNum[i] = parseInt(str);  //그냥 prompt로 받은건 문자이므로 연산할때는 숫자로 꼭 바꿔줘야 한다.
+            document.write(inputNum[i] + " ");
+        }
+        
+        document.write("<hr>");
+        document.write("역순으로 재정렬된 배열1 <br>");
+        for(var i=(inputNum.length-1); i>=0; i--){
+            document.write(inputNum[i] + " ");
+        }
+
+        document.write("<br>역순으로 재정렬된 배열2 <br>");
+        inputNum.reverse();
+        for(var i=0; i<inputNum.length; i++){
+            document.write(inputNum[i] + " ");
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

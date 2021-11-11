@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qu08.html</title>
+    <script>
+        document.write("<h2>숫자의 첫째자리와 마지막자리가 같은지 비교</h2>");
+        document.write("<hr>");
+        //prompt를 통해 입력받으면 무조건 문자로 반환됨
+        var str = prompt("숫자를 입력하세요",0);
+        
+        var num = parseInt(str); //정확한 결과를 얻으려면 parseInt를 통해 숫자로 변경해줘야 한다. 
+        var lastNum = num % 10;//숫자의 마지막자리(10으로 나누면 1의 자리가 남게됨)
+        var firstNum = 0; //숫자의 첫번째 자리 (숫자는 0으로 시작할 수 없으므로 0으로 초기화)
+
+        //숫자의 첫번째자리 구하기 위한 while문
+        //사용자가 입력한 숫자에 따라 반복횟수가 달라지므로 while문을 선택
+        while (num>0) { //숫자가 0보다 클때까지만 반복
+            //입력받은 숫자를 firstNum에 먼저 대입해야 한다. (사용자의 입력이 한자리 일 수도 있으므로)
+            //만약 사용자가 숫자를 1자리만 넣었을때 나누기 전에 일단 저장이 되어야 하니까 firstNum에 num을 삽입.
+            firstNum = num; 
+            num = Math.floor(num / 10);//Math.floor(5678/10) = 567
+            //입력받았던 숫자를 계속 깎아가면서 첫번째 자리를 구하고 있으므로 num
+            /*
+            숫자를 10으로 나눈 후 소수점 이하를 버린다.
+            1234/10 = 123.4 => 소수점 이하 버림처리 => 123
+            이런 방식으로 한자리씩 줄이고, 마지막에서 0.1을 버림처리해서 0이 되면서 firstNum에 들어가지 않고
+            이때 반복문을 탈출한다.
+            */
+        }
+        if(firstNum==lastNum){
+            document.write(str + "=>처음과 끝이 같음");
+        }
+        else{
+            document.write(str + "=>처음과 끝이 다름");
+        }
+    
+        // 문자를 prompt를 넣으면 a123a -> 양끝이 다르다고 뜸. 이건 에러
+        //자바스크립트는 달라도 에러가 발생하지 않는다. 결과가 이상하면 에러라고 보자
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
