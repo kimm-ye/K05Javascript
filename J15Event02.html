@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>J15Event02.html</title>
+    <script>
+        /*
+        이벤트활용2 : windowm객체에 이벤트핸들러를 부착한다.
+        */
+        window.onload = function(){
+            alert("문서의 load가 완료되었습니다.");
+            /*
+            문서의 로드가 완료된 후에는 문제없이 DOM을 가져올 수 있다.
+            */
+            var i = document.getElementById("myInput").value;
+        }
+        /*
+        해당 코드를 load이벤트 밖에서 실행하면 에러가 발생한다.
+        JS는 인터프리터 방식으로 동작되므로 해당 코드가 실행되는 시점에
+        엘리먼트가 없으므로 DOM을 가져올 수 없기 때문이다.
+
+        인터프리터 방식 : 위에서부터 쭉 내려오는건데
+        id="myInput"은 밑에 있는데 위에서 부터 읽어오니까 값이 없음으로 뜸
+        에러발생되지 않기 위해서는 엘리먼트가 나온 다음에 소스를 집어넣거나 (이러면 코드 지저분)
+        load된 다음에 뜨게 하면 되므로 window.onload에 넣으면 에러가 발생하지 않는다.
+        */
+        // var i = document.getElementById("myInput").value; =>에러발생
+    </script>
+</head>
+<body>
+    <h2>이벤트 - load 이벤트</h2>
+
+    <script>
+        alert("문서의 끝....!!");
+    </script>
+    <input type="text" id="myInput" value="하하하">
+</body>
+</html>
