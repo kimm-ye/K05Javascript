@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qu15.html</title>
+    <style>
+        div{
+            display: inline-block;
+            width: 200px; height: 50px;
+            line-height: 50px; /*height와 line-height 값이 같으면 가운데 정렬*/
+            text-align: center;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <script>
+    document.write("<h2>17개의 CSS3 색 이름과 색</h2>");
+    document.write("<hr>");
+    
+    var colorArr = new Array(16);
+    for(var i=0; i<colorArr.length; i++){
+        /*
+        rgb에 해당하는 색을 구하기 위해 난수를 생성한다.
+        256으로 나누면 0~255까지의 난수를 구할 수 있다.
+        단, 소수점이 남게 되므로 소수점 아래는 버림처리를 한다.
+
+        버림처리 floor혹은 parseInt
+        */
+        var r = parseInt(Math.random()*255)+1;
+        var g = parseInt(Math.random()*255)+1;
+        var b = parseInt(Math.random()*255)+1;
+        var color = "<div style='background-color: rgb("+r+", "+g+", "+b+");'>"
+            +"rgb("+r+", "+g+", "+b+")</div>";
+        document.write(color);
+    }
+
+    </script>
+</body>
+</html>

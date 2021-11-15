@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qu11.html</title>
+    <script>
+    function nowTime(){
+        var date = new Date();
+        var clock = document.getElementById("time");
+        clock.innerHTML = "현재시간: " + date.getHours() + "시," + date.getMinutes() + "분," 
+                + date.getSeconds() + "초";
+        if(date.getHours()< 12){
+            document.body.style.backgroundColor = "lightskyblue";
+        }
+        else{
+            document.body.style.backgroundColor  = "orange";
+        }
+    }
+    function nowTimeCall(){
+        setInterval("nowTime()", 1000);
+    }
+    nowTimeCall();
+    </script>
+</head>
+<body >
+    <h2>오전이면 lightskyblue, 오후면 orange 배경</h2>
+    <hr>
+    
+    <span id="time"> 여기에 시간 출력 </span>
+   
+</body>
+</html>

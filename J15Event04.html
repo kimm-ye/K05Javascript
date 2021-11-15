@@ -68,7 +68,7 @@
                 */
             }
             else{ //나머지항목에 텍스트 부분에 이중실선 넣음 선택한 후 select리스트 보면 다 ===으로 변경되어 있음
-                obj.options[i].text = "=====";
+                //obj.options[i].text = "=====";
             }
         }
     }
@@ -80,7 +80,7 @@
     <select id="fruit" onchange="fnSelect(this);">
         <option value="apple">사과</option>
         <option value="orange">오렌지</option>
-        <option value="mango">망고</option>
+        <option value="mango" selected>망고</option>
         <option value="banana">바나나</option>
         <option value="guaba">구아바</option>
     </select>
@@ -90,7 +90,12 @@
     <script>
     function fnSubmit(){
         //form태그 하위의 텍스트 상자의 DOM을 얻어온다.
-        var txtObj = document.subForm.txt;
+        var txtObj = document.subForm.txt; //텍스트 상자의 name속성으로 접근
+        // var txtObj = document.getElementById("idTxt"); //텍스트상자의 id속성으로 접근
+        /*위 두가지 방식 모두 사용할 수 있다. 
+        
+        그러나 form태그는 보통 첫번째 방식을 제일 많이 사용한다.*/
+
         /*
         텍스트 상자에 아무런 내용이 없는 경우 서버로 전송되지 않도록
         false값을 반환한다. 반환된 값은 이벤트 핸들러 쪽으로 전달되어
@@ -124,7 +129,7 @@
     <!-- form은 서버로 전송하는 것이므로 반드시 input태그에 value값이 있어야함(value값이 서버로 전송하는 값이므로) -->
     <form name = "subForm" action="http://ikosmo.co.kr" onsubmit="return fnSubmit();"> <!--이벤트핸들러가 return false가 되면 전송이 중단된다. /만약 true면 전송됨 -->
 
-        <input type="text" name="txt" value=""> 
+        <input type="text" name="txt" id="idTxt" value=""> <!--Form태그는 name 반드시 있어야한다. -->
         <input type="reset" value="리셋"> 
 
         <!-- 

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qu14.html</title>
+    <style>
+        /*
+        float: left; => div와 같은 블럭엘리먼트를 가로형으로 배치한다.
+         height: 50px; line-height: 50px; => 둘이 같으면 블럭엘리먼트에서 수직방향으로 가운데 정렬한다.
+        */
+        div{
+            /* display: inline-block; */
+            float: left; /*위와 동일하게 나타낸다*/
+
+            width: 100px; height: 50px;
+            line-height: 50px; /*height와 line-height 값이 같으면 가운데 정렬*/
+
+            /* text-indent :10px; */
+            padding-left: 10px; /*위와 동일하게 나타낸다*/
+        }
+    </style>
+</head>
+<body>
+    <h2>17개의 CSS3 색 이름과 색</h2>
+    <hr>
+    <!-- <div></div> -->
+    <script>
+    var colorNames = ["maroon", "red", "orange", "yellow", "olive", "purple", "fuchsia", 
+        "white", "lime", "green", "navy", "blue", "aqua", "teal", "black", "silver", "gray", "lightskyblue"];
+    // var color ='';
+        for(var i=0; i<colorNames.length; i++){
+        var color = "<div style=background-color:" + colorNames[i] + "> "+ colorNames[i] +"</div>";
+        document.write(color);
+        // color += "<div style=background-color:" + colorNames[i] + "> "+ colorNames[i] +"</div>";
+    }
+    // document.write(color); //이렇게 써도 무방함 += 사용했으므로
+    </script>
+
+</body>
+</html>

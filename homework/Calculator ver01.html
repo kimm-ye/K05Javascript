@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator.html</title>
+    <style>
+        *{
+            border-radius: 7px;
+            border: 0;
+            font-weight: bold;
+        }
+        table{
+            border: 1px solid #C7C7C7;
+            width:420px;  height: 360px;
+            border-spacing: 2px;
+            text-align: center; 
+        }
+        input[type=button], input[type=reset]{
+            padding: 10px 40px;
+            background-color: #7B7B7B;
+            color: white;
+            font-size: 20px;
+            width: 200px;
+            height: 50px;
+        }
+        input:hover{
+            background-color: #373737;
+        }
+        #lcd{
+            text-align: right;
+            background-color: #70C738;
+            font-size: 40px;
+            height: 85px;
+            width: 410px;
+            box-sizing: border-box;
+            padding: 15px 15px 20px 0;
+            color: #373737;
+        }
+        button{
+            background-color: #373737;
+            color: white;
+            padding : 10px;
+            width: 95px;
+            height: 45px;
+            font-size: 20px;
+        }
+        button:hover{
+            background-color: gray;
+        }
+        .symbol{
+            background-color: #FA960A;
+        }
+        .symbol:hover{
+            background-color: orange;
+        }
+    </style>
+    <script>
+    var lcd="";
+
+    function inputChar(num){
+        if(lcd=='0'){
+            lcd =num;
+            document.getElementById("lcd").innerHTML=lcd;
+        }
+        else{
+            lcd += num;
+            document.getElementById("lcd").innerHTML=lcd;
+        }
+    }
+
+    function calculate(){
+        lcd = eval(lcd);
+        document.getElementById("lcd").innerHTML=lcd;
+        lcd ="";
+    }
+
+    function backSpace(){
+        lcd = lcd.substring(0,lcd.length-1);
+        document.getElementById("lcd").innerHTML=lcd;
+        //시작은 0부터, 입력한 값의 길이의 -1만큼만 지워야하니까 
+        if(lcd.length==0){
+            document.getElementById("lcd").innerHTML='0';
+        }
+    }
+
+    function reset(){
+        lcd = '0';
+        document.getElementById("lcd").innerHTML=lcd;
+    }
+    </script>
+</head>
+<body>
+    <table style="background-color: #DDDDDD;">
+        <tr>
+            <td colspan="4">
+                <div id="lcd">0</div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input type="button" value="BackSpace" onclick="backSpace()">
+            </td>
+            <td colspan="2"> 
+                <input type="reset" value="C" onclick="reset()">
+            </td>
+        </tr>
+        <tr class="num">
+            <td><button value="1" onclick="inputChar('1')">1</button></td>
+            <td><button value="2" onclick="inputChar('2')">2</button></td>
+            <td><button value="3" onclick="inputChar('3')">3</button></td>
+            <td><button value="÷" onclick="inputChar('/')" class="symbol">÷</button></td>
+        </tr>
+        <tr class="num">
+            <td><button value="4" onclick="inputChar('4')">4</button></td>
+            <td><button value="5" onclick="inputChar('5')">5</button></td>
+            <td><button value="6" onclick="inputChar('6')">6</button></td>
+            <td><button value="×" onclick="inputChar('*')" class="symbol">×</button></td>
+        </tr>
+        <tr class="num">
+            <td><button value="7" onclick="inputChar('7')">7</button></td>
+            <td><button value="8" onclick="inputChar('8')">8</button></td>
+            <td><button value="9" onclick="inputChar('9')">9</button></td>
+            <td><button value="+" onclick="inputChar('+')" class="symbol">+</button></td>
+        </tr>
+        <tr class="num">
+            <td><button value="=" onclick="calculate()">=</button></td>
+            <td><button value="0" onclick="inputChar('0')">0</button></td>
+            <td><button value="." onclick="inputChar('.')">.</button></td>
+            <td><button value="-" onclick="inputChar('-')" class="symbol">-</button></td>
+        </tr>
+    </table>
+</body>
+</html>
