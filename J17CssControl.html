@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>J17CssControl.html</title>
+    <script>
+        //전역변수 : 기사부분의 DOM객체와 폰트사이즈 저장
+        var pTag, pSize;
+
+        window.onload = function(){
+            //기사가 있는 p태그의 DOM을 얻어옴
+            pTag = document.getElementById("article");
+            //현재 설정된 폰트 사이즈를 얻어옴 (별도의 사이즈 지정이 없다면 16px)
+            pSize = parseInt(pTag.style.fontSize);
+        }
+
+        function fnArticle(flag){
+            /*
+            JS에서 CSS속성 컨트롤
+                : DOM.style.CSS속성 = "속성값";
+                단, 이때 CSS 속성에 하이픈이 들어간다면 제거 후 첫글자를
+                대문자로 기술한다. 또한 크기를 설정할때는 반드시 px과 같은
+                단위를 기술해야 한다.
+            */
+            switch(flag){
+            case "+" : //폰트크기 
+                pSize += 10;
+                pTag.style.fontSize = pSize + "px";
+                break;
+            case "-" :
+                pSize -= 10;
+                pTag.style.fontSize = pSize + "px";
+                break;
+            case "R" : //폰트의 색깔 설정
+                pTag.style.color ="red";
+                break;
+            case "G" :
+                pTag.style.color ="green";
+                break;
+            case "B":
+                pTag.style.color ="blue";  
+                break;
+            case "Bo" : //폰트의 굵기
+                pTag.style.fontWeight ="bold";
+                break;
+            case "No" :
+                pTag.style.fontWeight ="normal";
+                break;
+            case "Ce" : //정렬
+                pTag.style.textAlign ="center";
+                break;
+            case "Le" :
+                pTag.style.textAlign ="left";
+                break;
+            case "B_red" : //배경색
+                pTag.style.backgroundColor ="red";
+                break;
+            case "B_silver" :
+                pTag.style.backgroundColor ="silver";
+                break;
+            case "B_white" :
+                pTag.style.backgroundColor ="white";
+                break;
+            default :
+                pTag.style.color = "black";
+            }
+        }
+
+        /*
+        연습문제] 글꼴바꾸기 버튼을 계속 누를때마다 아래 5가지 폰트가
+        토글되어 적용될 수 있도록 함수를 정의하시오.
+        글꼴 : Verdana, 굴림체, 휴먼옛체, 궁서, Impact
+        */
+        var fontToggle = 0; //폰트 토글을 위한 전역변수 
+        function setFont(){
+            //문제에서 주어진 폰트를 배열로 선언
+            var fontArray = ['Verdana', '굴림체', '휴먼옛체', '궁서', 'Impact'];
+            //정수를 5로 나누면 나머지는 0~4까지 생성된다. 배열의 인덱스와 일치
+            var idx = fontToggle % 5;
+            //스타일 지정
+            pTag.style.fontFamily=fontArray[idx];
+            //함수를 호출할때마다 전역변수 증가
+            fontToggle++;
+        }
+    </script>
+</head>
+<body>
+    <h2>자바스크립트로 CSS제어하기</h2>
+    <input type="button" value="글꼴바꾸기" onclick="setFont();">
+    <fieldset>
+        <legend>신문기사</legend>
+        <button onclick="fnArticle('+');">+</button>
+        <button onclick="fnArticle('-');">-</button>
+        <button onclick="fnArticle('R');">Red</button>
+        <button onclick="fnArticle('G');">Green</button>
+        <button onclick="fnArticle('B');">Blue</button>
+        <button onclick="fnArticle('');">Black</button>
+        <button onclick="fnArticle('Bo');">볼드체</button>
+        <button onclick="fnArticle('No');">보통체</button>
+        <button onclick="fnArticle('Ce');">가운데정렬</button>
+        <button onclick="fnArticle('Le');">좌측정렬</button>
+
+        <button onclick="fnArticle('B_red');">배경색(red)</button>
+        <button onclick="fnArticle('B_silver');">배경색(silver)</button>
+        <button onclick="fnArticle('B_white');">배경색(white)</button>
+
+    </fieldset>
+    <p style="font-size: 12px;" id="article">
+        오늘의 뉴스<br>
+        (서울=뉴스1) 국종환 기자 = 국내 은행 19곳의 올해 3분기(7~9월) 당기순이익이 4조6000억원으로 전년 동기(3조5000억원) 대비 31.4%(1조1000억원) 늘었다. 
+        대출 증가로 이자이익이 늘고, 대손비용이 줄어든 영향이다.
+
+        금융감독원은 16일 '2021년 3분기 국내은행 영업실적 잠정치'를 발표했다.
+
+        국내은행의 이자이익은 11조6000억원으로 전년 동기 대비 1조3000억원 증가했다. 
+        이자마진(NIM)이 1.44%로 전년 동기 대비 0.04%p 상승한 데다, 대출채권 등 이자수익자산 증가세가 지속되면서 이익이 늘었다. 
+        국내은행의 이자수익자산은 지난해 9월말 2551조4000억원에서 올해 9월말 2785조2000억원으로 9.2% 증가했다.
+    </p>
+</body>
+</html>

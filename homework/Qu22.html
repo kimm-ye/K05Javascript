@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qu22.html</title>
+    <script>
+    function displayTime(){
+        var date = new Date();
+        var displayClock = document.getElementById("clock");
+        displayClock.innerHTML = "오후 " + date.getHours() + "시 " + 
+        date.getMinutes() + "분 " + date.getSeconds() + "초";
+    }
+    
+    var timer;
+    function displayTimeCall(){
+        timer = setInterval("displayTime()",1000);
+    }
+
+    var click=0;
+    function stopClock(){
+        if(click==0){
+            clearInterval(timer);
+            click++;
+        }
+        else if(click==1){
+            displayTimeCall();
+            click='0';
+        }
+    }
+    </script>
+</head>
+<body onload="displayTimeCall()">
+    <h2>div태그에 시계만들기</h2>
+    시계를 클릭하면 시계가 멈추고 다시 클릭하면 가기 시작한다.
+    <hr>
+
+    <div id="time">
+        <button type="button" id="clock" onclick="stopClock();"></button>
+    </div>
+
+</body>
+</html>
