@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qu16.html</title>
+    <script>
+        var click = 0;
+        function borderButton(){
+            var param = document.getElementById("myPara");
+            if(click==0){
+                param.style.border = "3px double gray";
+                click++;
+                // console.log(click);
+            }
+            else if(click==1){
+                param.style.border = "0";
+                click=0;
+                // console.log(click);
+            }
+        }
+
+        function pButton(){
+            var span = document.getElementById("mySpan");
+            if(click==0){
+                span.style.border = "2px dotted violet";
+                click++;
+                // console.log(click);
+            }
+            else if(click==1){
+                span.style.border = "0";
+                click=0;
+                // console.log(click);
+            }
+        }
+    </script>
+</head>
+<body>
+    <h2 style="display: inline-block; padding-right: 10px;">자바스크립트란?</h2>
+    <button onclick="borderButton();">border</button>
+    <button onclick="pButton();">p</button>
+    <hr>
+    <p id="myPara" >자바스크립트는 웹 프로그래밍 언어로서 웹 페이지를 동적 변경시킬 수 있다.</p>
+    <p><span id="mySpan" >C 언어</span>를 아는 사용자는 빠르게 학습할 수 있다.</p>
+    <p>이벤트 등 GUI 프로그래밍에 필요한 요소들이 있어 학습에 약간의 어려움이 있다.</p>
+
+</body>
+</html>
